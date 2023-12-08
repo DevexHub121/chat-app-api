@@ -4,6 +4,7 @@ const userController = require("../controller/userController");
 const { upload } = require("../../utils/uploadImages");
 
 router.post("/loginWithEmail", userController.loginWithEmail);
+router.post("/getAll", userController.getAll);
 router.post("/compareOTP", userController.OTP);
 router.post("/userDetail", userController.userDetail);
 router.post("/register", userController.register);
