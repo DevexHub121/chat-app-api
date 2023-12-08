@@ -70,9 +70,11 @@ const userController = {
       });
     });
   },
+
   async getAll(req, res) {
-    res.json({ success: true, data: "Welcome to chat application" });
+    res.json({ success: true, data: "welcome" });
   },
+
   // compare otp to login
   async OTP(req, res) {
     await User.findOne({ email: req.body.email }).then(async (userExist) => {
@@ -229,12 +231,12 @@ const userController = {
         return res.status(404).send("Sender or receiver not found");
       }
 
-      if (req.file) {
+      if (req.files.length > 0) {
         const newMessage = new Message({
           sender: req.body.sender,
           receiver: req.body.receiver,
           message: req.body.message,
-          messageImage: req.file.filename,
+          messageImage: req.files.map((file) => "static/" + file.filename),
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         });
@@ -351,10 +353,11 @@ const userController = {
       );
 
       // Sort the users based on the latest message's createdAt
-      users.sort(
-        (a, b) =>
+      users.sort((a, b) => {
+        return (
           b.lastMessage.createdAt.getTime() - a.lastMessage.createdAt.getTime()
-      );
+        );
+      });
 
       res.json({
         data: users,
@@ -369,12 +372,12 @@ const userController = {
 
   async groupChat(req, res) {
     try {
-      if (req.file) {
+      if (req.files.length > 0) {
         const newMessage = new Message({
           sender: req.body.sender,
           groupId: req.body.groupId,
           message: req.body.message,
-          messageImage: req.file.filename,
+          messageImage: req.files.map((file) => "static/" + file.filename),
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
           //   receiver: "",
@@ -440,10 +443,26 @@ const userController = {
         })
       );
 
-      groupListWithMessages.sort((a, b) => {
-        b.latestMessage.createdAt.getTime() -
-          a.latestMessage.createdAt.getTime();
-      });
+      if (groupListWithMessages) {
+        groupListWithMessages.sort((a, b) => {
+          if (a && b) {
+            if (a.latestMessage && b.latestMessage) {
+              if (a.latestMessage.createdAt && b.latestMessage.createdAt) {
+                return (
+                  b.latestMessage.createdAt.getTime() -
+                  a.latestMessage.createdAt.getTime()
+                );
+              }
+            }
+          }
+        });
+      }
+      // groupListWithMessages.sort((a, b) => {
+      //   return (
+      //     b.latestMessage.createdAt.getTime() -
+      //     a.latestMessage.createdAt.getTime()
+      //   );
+      // });
 
       res.json({
         data: groupListWithMessages,

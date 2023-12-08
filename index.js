@@ -10,7 +10,7 @@ const http = require("http").createServer(app);
 // const io = require("socket.io")(http);
 const io = require("socket.io")(http, {
   cors: {
-    origin: "http://localhost:4200",
+    origin: "https://chat-app-35925.web.app",
     methods: ["GET", "POST"],
     transports: ["websocket"],
   },
@@ -19,6 +19,7 @@ global.socketIO = io;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+// app.use(cors({}));
 app.use(
   cors({
     origin: "https://chat-app-35925.web.app",

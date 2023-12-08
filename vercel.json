@@ -72,7 +72,7 @@
       "dest": "/index.js"
     },
     {
-      "src": "/getGroupChat/(?<id>[^/]*)",
+      "src": "/getGroupChat/(?<id>[^/]*)/(?<id2>[^/]*)",
       "dest": "/index.js"
     },
     {

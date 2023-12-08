@@ -8,7 +8,7 @@ router.get("/getAll", userController.getAll);
 router.post("/compareOTP", userController.OTP);
 router.post("/userDetail", userController.userDetail);
 router.post("/register", userController.register);
-router.post("/message", upload.single("messageImage"), userController.message);
+router.post("/message", upload.array("messageImage"), userController.message);
 router.get("/getUserChat/:senderId/:receiverId", userController.getUserChat);
 router.get("/getusers/:id", userController.getusers);
 router.get("/getUserProfile/:id", userController.getUserProfile);
@@ -25,7 +25,7 @@ router.post("/addUsers", upload.single("groupImage"), userController.addUsers);
 router.get("/userGroup/:id", userController.userGroup);
 router.post(
   "/groupChat",
-  upload.single("messageImage"),
+  upload.array("messageImage"),
   userController.groupChat
 );
 router.get("/getGroupChat/:groupId", userController.getGroupChat);
