@@ -12,6 +12,10 @@
       "dest": "/index.js"
     },
     {
+      "src": "/user/getAll",
+      "dest": "/index.js"
+    },
+    {
       "src": "/user/loginWithEmail",
       "dest": "/index.js"
     },
