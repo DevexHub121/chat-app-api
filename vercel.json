@@ -1,0 +1,88 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "./index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/user/loginWithEmail",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/user/compareOTP",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/user/userDetail",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/user/register",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/user/message",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/user/getUserChat/(?<id>[^/]*)/(?<id>[^/]*)",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/user/getusers/(?<id>[^/]*)",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/user/getUserProfile/(?<id>[^/]*)",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/user/getUserProfile/(?<id>[^/]*)",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/user/getUserProfileEmail",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/user/updateProfile",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/user/(?<id>[^/]*)",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/addUsers",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/userGroup/(?<id>[^/]*)",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/groupChat",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/getGroupChat/(?<id>[^/]*)",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/getUserAndGroupList/(?<id>[^/]*)",
+      "dest": "/index.js"
+    },
+
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
+}
