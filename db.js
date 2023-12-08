@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/chatApp")
+  .connect(
+    "mongodb+srv://admin:Admin1234@cluster0.ma3xm.mongodb.net/chatApp?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("DB connected successfully");
   })

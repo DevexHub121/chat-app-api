@@ -71,7 +71,7 @@ const userController = {
     });
   },
   async getAll(req, res) {
-    res.json({ success: true, data: "Welcome to chat app" });
+    res.json({ success: true, data: "Welcome to chat application" });
   },
   // compare otp to login
   async OTP(req, res) {
