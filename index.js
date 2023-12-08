@@ -19,13 +19,12 @@ global.socketIO = io;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors({}));
-// app.use(
-//   cors({
-//     origin: "http://localhost:4200",
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: "https://chat-app-35925.web.app",
+    credentials: true,
+  })
+);
 
 const port = 8080;
 const route = require("./v1/route");
