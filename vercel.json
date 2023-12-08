@@ -32,10 +32,6 @@
       "dest": "/index.js"
     },
     {
-      "src": "/user/getUserChat/(?<id>[^/]*)/(?<id>[^/]*)",
-      "dest": "/index.js"
-    },
-    {
       "src": "/user/getusers/(?<id>[^/]*)",
       "dest": "/index.js"
     },
