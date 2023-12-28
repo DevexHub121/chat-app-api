@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const path = require("path");
 const bodyParser = require("body-parser");
+const passport = require("passport");
 
 app.use("/static", express.static(path.join(__dirname, "uploads")));
 
@@ -10,7 +11,7 @@ const http = require("http").createServer(app);
 // const io = require("socket.io")(http);
 const io = require("socket.io")(http, {
   cors: {
-    origin: "https://chat-app-35925.web.app",
+    origin: "http://localhost:4200",
     methods: ["GET", "POST"],
     transports: ["websocket"],
   },
@@ -20,9 +21,11 @@ global.socketIO = io;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(cors({}));
+app.use(passport.initialize());
+require("./passport/passport")(passport);
 app.use(
   cors({
-    origin: "https://chat-app-35925.web.app",
+    origin: "http://localhost:4200",
     credentials: true,
   })
 );
